@@ -1,10 +1,9 @@
 FROM node:13.8-alpine
 
 ENV TZ Asia/Tokyo
-ENV PATH $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 
 RUN apk update && \
-    apk add --no-cache git curl
+    apk add --no-cache curl
 
 # Hubotライブラリ準備
 RUN npm install -g yo generator-hubot
@@ -18,5 +17,3 @@ RUN addgroup -S hubot && \
 USER hubot
 
 WORKDIR /app
-
-CMD ["/bin/ash"]
